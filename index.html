@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Project title</title>
+        <script>
+            var params = JSON.parse(decodeURIComponent(new URLSearchParams(window.location.search).get('params') || "") || "{}")
+            var hash = new URLSearchParams(window.location.search).get('hash') || ""
+            var edition = params.edition || 0
+            var totalEditions = params.totalEditions || 1
+            
+            console.log(hash)
+            console.log(edition)
+            console.log(totalEditions)
+        </script>
+    </head>
+    <body>
+        <p>Project</p>
+    </body>
+</html>
