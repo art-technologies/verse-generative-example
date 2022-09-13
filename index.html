@@ -2,7 +2,7 @@
     <head>
         <title>Project title</title>
         <script>
-            var params = JSON.parse(decodeURIComponent(new URLSearchParams(window.location.search).get('params') || "") || "{}")
+            var params = JSON.parse(decodeURIComponent(new URLSearchParams(window.location.search).get("params") || "") || "{}")
             var hash = new URLSearchParams(window.location.search).get("hash") || ""
             var edition = params.edition || 0
             var totalEditions = params.totalEditions || 1
