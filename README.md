@@ -4,15 +4,15 @@
 
 This repository demostrates an example code for generative project of how to access hash and other parameters such as edition number and total number of editions.
 
-`index.html` file expects to receive `hash` and `params` query parameters. `hash` is accepted as a string while `params` is URI encoded encoded object.
+`index.html` file expects to receive `hash` and `params` query parameters. `hash` is accepted as a string while `params` is URI encoded object.
 
 ## Example
 
-For example opening a link `index.html?params=%7B"edition"%3A3%2C"totalEditions"%3A50%7D&hash=123` will result in
+For example opening a link `index.html?params=%7B"edition"%3A`**3**`%2C"totalEditions"%3A`**50**`%7D&hash=`**123** will result in
 
 `hash` - 123
 
-`edition` - 10
+`edition` - 3
 
 `totalEditions` - 50
 
