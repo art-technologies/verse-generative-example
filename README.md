@@ -6,9 +6,9 @@ This repository demostrates an example code for generative project of how to acc
 
 `index.html` file expects to receive `hash` and `params` query parameters. `hash` is accepted as a string while `params` is URI encoded object.
 
-## Example
+## Query parameters
 
-For example opening a link `index.html?params=%7B"edition"%3A`**3**`%2C"totalEditions"%3A`**50**`%7D&hash=`**123** will result in
+For example, given a link `index.html?params=%7B"edition"%3A`**3**`%2C"totalEditions"%3A`**50**`%7D&hash=`**123**. This cryptic link in itself has `hash`, `edition` and `totalEditions` and will result in
 
 `hash` - 123
 
@@ -16,9 +16,11 @@ For example opening a link `index.html?params=%7B"edition"%3A`**3**`%2C"totalEdi
 
 `totalEditions` - 50
 
-To test with different parameters you can update these variables in the URL
+To test with different parameters you can update numbers `3` and `50` the this URL.
 
 `index.html?params=%7B"edition"%3A`**3**`%2C"totalEditions"%3A`**50**`%7D`
+
+The reason we decided to pass encoded struct in query parameters as it will allow simple generalisation for upcoming features.
 
 ## Details
 
