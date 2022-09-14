@@ -28,12 +28,13 @@ Verse system will need to hash and other parameters to your project's
 
 ```js
 // Parse payload from query params
-const payload = JSON.parse(decodeURIComponent(atob(new URLSearchParams(window.location.search).get("payload") || "")))
+const q = new URLSearchParams(window.location.search).get("payload")
+const p = JSON.parse(q ? atob(q) : "{}")
 
 // Use available payload variables in your code
-const hash = payload.hash
-const editionNumber = payload.editionNumber
-const totalEditions = payload.totalEditions
+const hash = p.hash || "0"
+const editionNumber = p.editionNumber || 1
+const totalEditions = p.totalEditions || 1
 ```
 
 After that you can use Playground to test.
