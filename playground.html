@@ -92,7 +92,7 @@
             totalEditions: totalEditions.value,
         }
 
-        srcValue += "?payload=" + btoa(encodeURIComponent(JSON.stringify(payload)))
+        srcValue += "?payload=" + btoa(JSON.stringify(payload))
         iframeEmbed.setAttribute("src", srcValue)
     }
 
