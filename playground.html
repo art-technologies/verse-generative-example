@@ -103,13 +103,12 @@
     const iframeEmbed = document.getElementById("iframe-embed")
 
     document.getElementById("randomize-btn").addEventListener('click', (ev) => {
-        let maxEditions = Math.round(Math.random() * 1000)
-
         if (document.getElementById("randomize-total-editions").checked) {
-            totalEditions.value = maxEditions.toString()
+            totalEditions.value = Math.round(Math.random() * 1000)
         }
+        let maxEditions = Number(totalEditions.value)
         if (document.getElementById("randomize-edition-number").checked) {
-            editionNumber.value = Math.round(Math.random() * maxEditions).toString()
+            editionNumber.value = Math.ceil(Math.random() * maxEditions).toString()
         }
         if (document.getElementById("randomize-hash").checked) {
             hash.value = randomHash(64)
