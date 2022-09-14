@@ -10,7 +10,16 @@ This repository demostrates an example code for generative project of how to acc
 
 To test your project with different parameters you can open `playground.html` and provide your *IFrame URL*. This file may be locally on your computer or online.
 
-We will be improving playground as we go to add new variables and examples.
+You can also access playground remotely [here](http://playground-generative.s3-website-eu-west-1.amazonaws.com/). We will be improving playground as we go to add new variables and examples. 
+
+### Examples
+You can try running few example projects on Playground using *IFrame URL* below
+Basic - [http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/basic.html](http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/basic.html)
+
+p5js example - [http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/p5-example.html](http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/p5-example.html)
+
+
+Note - playground options appear on hover.
 
 ## Instructions
 
@@ -28,3 +37,7 @@ const totalEditions = payload.totalEditions
 ```
 
 After that you can use Playground to test.
+
+## Examples
+
+There are few examples in `examples/` folder
