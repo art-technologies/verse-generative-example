@@ -4,6 +4,8 @@
 
 This repository demostrates an example code for generative project of how to access hash and other parameters such as edition number and total number of editions.
 
+You can use `index.html` as a starting project.
+
 ## Playground
 
 ![alt text](docs/assets/playground-demo.gif "Title")
@@ -25,7 +27,7 @@ Note - playground options appear on hover.
 ## Instructions
 
 Verse system will need to hash and other parameters to your project's  
-`index.html` during minting. To allow your code accept these parameters you should include following `js` code. You can now continue using
+`index.html` during minting. To allow your code accept these parameters you should include following `javascript` code. 
 
 ```js
 // Parse payload from query params
