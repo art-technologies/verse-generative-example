@@ -14,7 +14,8 @@ You can also access playground remotely [here](http://playground-generative.s3-w
 
 ### Examples
 You can try running few example projects on Playground using *IFrame URL* below
-Basic - [http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/basic.html](http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/basic.html)
+
+Basic example - [http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/basic.html](http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/basic.html)
 
 p5js example - [http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/p5-example.html](http://playground-generative.s3-website-eu-west-1.amazonaws.com/examples/p5-example.html)
 
