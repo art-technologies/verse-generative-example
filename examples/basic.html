@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Project title</title>
+        <style>
+            .project {
+                margin: auto;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="project">
+            <p>Hash: <i id="hash"></i></p>
+            <p>Edition Number: <i id="edition-number"></i></p>
+            <p>Total Editions: <i id="total-editions"></i></p>
+        </div>
+    </body>
+
+    <script>
+        // Parse payload from query params
+        const payload = JSON.parse(decodeURIComponent(atob(new URLSearchParams(window.location.search).get("payload") || "")))
+
+        // Use available payload variables in your code
+        const hash = payload.hash
+        const editionNumber = payload.editionNumber
+        const totalEditions = payload.totalEditions
+
+        document.getElementById("hash").innerText = hash
+        document.getElementById("edition-number").innerText = editionNumber
+        document.getElementById("total-editions").innerText = totalEditions
+    </script>
+</html>
