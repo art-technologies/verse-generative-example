@@ -26,7 +26,17 @@ The reason we decided to pass encoded struct in query parameters as it will allo
 
 URL query parameters are connstructed by converting the follow object to URI encoded string.
 
-```javascript
-let obj = { edition: 10, totalEditions: 50 };
-console.log(encodeURIComponent(JSON.stringify(obj))); //%7B"edition"%3A3%2C"totalEditions"%3A50%7D
+```js
+// Parse payload from query params
+const payload = JSON.parse(decodeURIComponent(atob(new URLSearchParams(window.location.search).get("payload") || "")))
+
+// Use available payload variables in your code
+const hash = payload.hash
+const editionNumber = payload.editionNumber
+const totalEditions = payload.totalEditions
+
+
+document.getElementById("hash").innerText = hash
+document.getElementById("edition-number").innerText = editionNumber
+document.getElementById("total-editions").innerText = totalEditions
 ```
