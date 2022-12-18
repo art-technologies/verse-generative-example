@@ -20,9 +20,8 @@
         const p = JSON.parse(q ? atob(q) : "{}")
 
         // Use available payload variables in your code
-        const hash = p.hash || "0"
+        const hash = p.hash || "0x70118d0c565735bde57bc39eb3fa29f116eb23adf2972d1a8d9be0bd34f9656e"
         const editionNumber = p.editionNumber || 1
-        const totalEditions = p.totalEditions || 1
 
         // initialize PRNG with hash
         const prng = Random(hash)
