@@ -20,7 +20,7 @@
         const p = JSON.parse(q ? atob(q) : "{}")
 
         // Use available payload variables in your code
-        const hash = p.hash || "0x70118d0c565735bde57bc39eb3fa29f116eb23adf2972d1a8d9be0bd34f9656e"
+        const hash = p.hash || "0x70118d0c565735bde57bc39eb3fa29f116eb23adf2972d1a8d9be0bd34f9656f"
         const editionNumber = p.editionNumber || 1
 
         // initialize PRNG with hash
@@ -52,8 +52,8 @@
         const palette = palettes[prng.randInt(0, palettes.length)]
 
         const lightColor = hexToRgb(palette[editionNumber % palette.length])
-        const ambientLightColor = hexToRgb(palette[totalEditions % palette.length])
-        const pointerColor = hexToRgb(palette[(editionNumber + totalEditions) % palette.length])
+        const ambientLightColor = hexToRgb(palette[editionNumber % palette.length])
+        const pointerColor = hexToRgb(palette[(editionNumber) % palette.length])
 
         const objects = [];
         let eyeZ;
