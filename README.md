@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository demostrates an example code for generative project of how to access hash and other parameters such as edition number and total number of editions.
+This repository demostrates an example code for generative project of how to access hash and other parameters such as edition number.
 
 You can use `index.html` as a starting project.
 
@@ -37,7 +37,6 @@ const p = JSON.parse(q ? atob(q) : "{}");
 // Use available payload variables in your code
 const hash = p.hash || "0";
 const editionNumber = p.editionNumber || 1;
-const totalEditions = p.totalEditions || 1;
 ```
 
 After that you can use Playground to test.

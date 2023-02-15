@@ -1,33 +1,126 @@
-<html>
-    <head>
-        <title>Project title</title>
-        <style>
-            .project {
-                margin: auto;
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="project">
-            <p>Hash: <i id="hash"></i></p>
-            <p>Edition Number: <i id="edition-number"></i></p>
-            <p>Total Editions: <i id="total-editions"></i></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VERSE - Playground</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            height:100%;
+        }
+
+        .playground-controls {
+            display: block;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+
+            z-index: 1000;
+            opacity: 0;
+
+            margin: 1em;
+        }
+
+        .playground-controls:hover {
+            opacity: 1;
+        }
+
+        .playground-control {
+            display: block;
+            width: 100%;
+        }
+
+        .embedded-iframe {
+            height: 100%;
+        }
+
+        #iframe-embed {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="playground-controls">
+        <div class="playground-control">
+            <label for="hash">Hash</label>
+            <input id="hash" name="hash" placeholder="any random hash" value="123456789"/>
+            <input type="checkbox" id="randomize-hash" checked="checked" />
         </div>
-    </body>
+        <div class="playground-control">
+            <label for="edition-number">Edition Number</label>
+            <input id="edition-number" name="edition-number" value="1"/>
+            <input type="checkbox" id="randomize-edition-number" checked="checked" />
+        </div>
+        <div class="playground-control">
+            <label for="total-editions">Total Editions</label>
+            <input id="total-editions" name="total-editions" value="10"/>
+            <input type="checkbox" id="randomize-total-editions" checked="checked" />
+        </div>
+        <div class="playground-control">
+            <label for="iframe-url">IFrame URL</label>
+            <input id="iframe-url" name="iframe-url" value="examples/p5-example.html"/>
+        </div>
+        <div class="playground-control">
+            <button id="randomize-btn">Randomize</button>
+        </div>
+    </div>
+    <div class="embedded-iframe">
+        <iframe id="iframe-embed" src=""></iframe>
+    </div>
+</body>
 
-    <script>
-        // Parse payload from query params
-        const q = new URLSearchParams(window.location.search).get("payload")
-        const p = JSON.parse(q ? atob(q) : "{}")
+<script>
+    function randomHash(hashLength) {
+        hashLength = hashLength ?? 32
+        const alphabet = "0123456789abcdef"
 
-        // Use available payload variables in your code
-        const hash = p.hash || "0"
-        const editionNumber = p.editionNumber || 1
-        const totalEditions = p.totalEditions || 1
+        let result = ""
+        for (let i = 0; i < hashLength; ++i) {
+            const letter = alphabet[Math.floor(Math.random() * alphabet.length)]
+            result += letter
+        }
+        return result
+    }
 
-        document.getElementById("hash").innerText = hash
-        document.getElementById("edition-number").innerText = editionNumber
-        document.getElementById("total-editions").innerText = totalEditions
-    </script>
+    function applyChanges() {
+        let srcValue = iframeUrl.value
+        const payload = {
+            hash: hash.value,
+            editionNumber: editionNumber.value,
+            totalEditions: totalEditions.value,
+        }
+
+        srcValue += "?payload=" + btoa(JSON.stringify(payload))
+        iframeEmbed.setAttribute("src", srcValue)
+    }
+
+    const hash = document.getElementById("hash")
+    const editionNumber = document.getElementById("edition-number")
+    const totalEditions = document.getElementById("total-editions")
+    const iframeUrl = document.getElementById("iframe-url")
+    const iframeEmbed = document.getElementById("iframe-embed")
+
+    document.getElementById("randomize-btn").addEventListener('click', (ev) => {
+        if (document.getElementById("randomize-total-editions").checked) {
+            totalEditions.value = Math.round(Math.random() * 1000)
+        }
+        let maxEditions = Number(totalEditions.value)
+        if (document.getElementById("randomize-edition-number").checked) {
+            editionNumber.value = Math.ceil(Math.random() * maxEditions).toString()
+        }
+        if (document.getElementById("randomize-hash").checked) {
+            hash.value = randomHash(64)
+        }
+        applyChanges()
+    })
+
+    hash.addEventListener("input", applyChanges)
+    editionNumber.addEventListener("input", applyChanges)
+    totalEditions.addEventListener("input", applyChanges)
+    iframeUrl.addEventListener("input", applyChanges)
+
+    applyChanges()
+</script>
 </html>
