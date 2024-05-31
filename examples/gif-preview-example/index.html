@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIF Preview example</title>
+  <script src="./gif.js"></script>
+</head>
+<body>
+<h1>GIF Preview example</h1>
+<p>This project uses gif.js to export simple animation into Verse $artifact</p>
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid #000000;"></canvas>
+
+<script>
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function drawFrame(color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 300, 300);
+  }
+
+  function start() {
+    const gif = new GIF({
+      workers: 2,
+      quality: 10,
+    });
+
+    const colors = ['red', 'blue', 'green'];
+
+    // 1. we capture each frame with `gif.js`
+    colors.forEach(color => {
+      drawFrame(color);
+      gif.addFrame(canvas, {copy: true, delay: 500});
+    });
+
+    // 2. once finished:
+    // - convert blob into base64
+    // - add base64 as `window.$artifact.preview`
+    // - dispatch capture event
+    gif.on('finished', function(blob) {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = function() {
+        const base64data = reader.result;
+
+        window.$artifact = {
+          // (optional) custom preview data in base64 encoding (RFC2397)
+          preview: base64data,
+        };
+
+        dispatchEvent(new Event("capture-preview"));
+        console.info('###verse-preview-capture');
+      }
+    });
+
+    // don't forget to call `render()`!
+    gif.render();
+  }
+
+  start();
+</script>
+</body>
+</html>
